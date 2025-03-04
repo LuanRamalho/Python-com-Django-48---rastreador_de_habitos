@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Hábitos</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'habitos/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Lista de Hábitos</h1>
+        <a href="{% url 'criar_habito' %}">Criar Novo Hábito</a>
+    </header>
+    
+    <ul>
+        {% for habito in habitos %}
+            <li>
+                <a href="{% url 'relatorio_habito' habito.id %}">{{ habito.nome }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

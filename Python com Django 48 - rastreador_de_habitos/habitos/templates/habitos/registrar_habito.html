@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Cumprimento</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'habitos/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Registrar Cumprimento do Hábito: {{ habito.nome }}</h1>
+        <a href="{% url 'relatorio_habito' habito.id %}">Voltar ao Relatório</a>
+    </header>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="data">Data (DD/MM/YYYY)</label>
+            <input type="text" name="data" id="data" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="cumprido">Cumpriu?</label>
+            <input type="checkbox" name="cumprido" id="cumprido">
+        </div>
+
+        <button type="submit">Registrar</button>
+    </form>
+</body>
+</html>
