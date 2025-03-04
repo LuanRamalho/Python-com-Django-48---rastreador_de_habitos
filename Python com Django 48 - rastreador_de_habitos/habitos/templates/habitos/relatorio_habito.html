@@ -30,6 +30,22 @@
             line-height: 30px;
             font-size: 16px;
         }
+
+        /* Estilo do botão */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -65,6 +81,11 @@
                 </li>
             {% endfor %}
         </ul>
+    </section>
+
+    <!-- Botão para registrar o hábito -->
+    <section>
+        <a href="{% url 'registrar_habito' habito.id %}" class="btn">Registrar Hábito</a>
     </section>
 </body>
 </html>
