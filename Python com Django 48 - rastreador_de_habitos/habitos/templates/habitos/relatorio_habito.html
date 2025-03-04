@@ -56,6 +56,8 @@
     
     <section>
         <h2>Resumo do Hábito</h2>
+        <p> Data Inicial: {{ habito.data_inicial|date:"d/m/Y" }}</p>
+        <p> Data Final: {{ habito.data_final|date:"d/m/Y" }}</p>
         <p>Total de Dias: {{ total_dias }}</p>
         <p>Dias Cumpridos: {{ dias_cumpridos }}</p>
         <p>Porcentagem de Cumprimento: {{ porcentagem }}%</p>
