@@ -5,17 +5,15 @@ Criar um novo aplicativo Django
 cd rastreador_de_habitos
 python manage.py startapp habitos
 
-Criar e aplicar as migrações do banco de dados
+Criar e aplicar as migraÃ§Ãµes do banco de dados
 python manage.py makemigrations
 python manage.py migrate
 
-Criar um superusuário para acessar o admin
+Criar um superusuÃ¡rio para acessar o admin
 python manage.py createsuperuser
 
 Executar o servidor de desenvolvimento
 python manage.py runserver
 
 Ao conectar o servidor, acesse:
-http:127.0.0.1:8000
-
-
+http:127.0.0.1:8000/criar
