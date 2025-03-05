@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir Registro</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'habitos/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Excluir Registro do Hábito: {{ registro.habito.nome }}</h1>
+        <a href="{% url 'relatorio_habito' registro.habito.id %}">Cancelar</a>
+    </header>
+    
+    <p>Tem certeza de que deseja excluir este registro?</p>
+    <p>Data: {{ registro.data|date:"d/m/Y" }} - {% if registro.cumprido %}Cumprido{% else %}Não Cumprido{% endif %}</p>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Confirmar Exclusão</button>
+    </form>
+</body>
+</html>

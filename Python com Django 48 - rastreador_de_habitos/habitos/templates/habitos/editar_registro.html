@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Registro</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'habitos/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Editar Registro do Hábito: {{ registro.habito.nome }}</h1>
+        <a href="{% url 'relatorio_habito' registro.habito.id %}">Voltar</a>
+    </header>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data" value="{{ registro.data|date:'Y-m-d' }}" required>
+        
+        <label for="cumprido">Cumprido:</label>
+        <select id="cumprido" name="cumprido">
+            <option value="True" {% if registro.cumprido %}selected{% endif %}>Sim</option>
+            <option value="False" {% if not registro.cumprido %}selected{% endif %}>Não</option>
+        </select>
+
+        <button type="submit">Salvar Alterações</button>
+    </form>
+</body>
+</html>

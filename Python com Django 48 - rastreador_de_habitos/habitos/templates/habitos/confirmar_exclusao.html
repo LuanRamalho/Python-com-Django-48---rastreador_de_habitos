@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir Hábito</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'habitos/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Excluir Hábito</h1>
+        <a href="{% url 'listar_habitos' %}">Cancelar</a>
+    </header>
+
+    <section>
+        <p>Tem certeza de que deseja excluir o hábito "{{ habito.nome }}"?</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">Confirmar Exclusão</button>
+        </form>
+    </section>
+</body>
+</html>
