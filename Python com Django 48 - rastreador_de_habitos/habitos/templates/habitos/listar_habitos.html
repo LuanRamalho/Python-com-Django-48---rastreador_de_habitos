@@ -4,21 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Hábitos</title>
-    {%load static%}
+    {% load static %}
     <link rel="stylesheet" href="{% static 'habitos/styles.css' %}">
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 12px; /* Aumenta o espaço entre os hábitos */
+        }
+
+        .habit-name {
+            flex-grow: 1;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 8px; /* Espaço entre os botões */
+        }
+
+        .btn {
+            padding: 6px 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .btn-edit {
+            background-color: #f0ad4e;
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background-color: #ec971f;
+        }
+
+        .btn-delete {
+            background-color: #d9534f;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background-color: #c9302c;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Lista de Hábitos</h1>
-        <a href="{% url 'criar_habito' %}">Criar Novo Hábito</a>
+        <h1>Seus Hábitos</h1>
+        <a href="{% url 'criar_habito' %}" class="btn btn-create">Criar Novo Hábito</a>
     </header>
-    
-    <ul>
-        {% for habito in habitos %}
-            <li>
-                <a href="{% url 'relatorio_habito' habito.id %}">{{ habito.nome }}</a>
-            </li>
-        {% endfor %}
-    </ul>
+
+    <section>
+        <ul>
+            {% for habito in habitos %}
+                <li>
+                    <a href="{% url 'relatorio_habito' habito.id %}" class="habit-name">{{ habito.nome }}</a>
+                    <div class="buttons">
+                        <a href="{% url 'editar_habito' habito.id %}" class="btn btn-edit">Editar</a>
+                        <a href="{% url 'excluir_habito' habito.id %}" class="btn btn-delete">Excluir</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
 </body>
 </html>
